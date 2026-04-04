@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra confirmada — Legit XIT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06080a;--accent:#ff4800;--accent2:#ffb800;--cyan:#00e5ff;--green:#39ff14;--text:#d8e4ec;--dim:#4a6070}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;min-height:100vh;font-size:17px;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(57,255,20,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,20,0.015) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px)}
+.orb1{width:500px;height:500px;background:rgba(57,255,20,0.05);top:-100px;left:-100px}
+.orb2{width:350px;height:350px;background:rgba(255,72,0,0.04);bottom:-80px;right:-80px}
+
+/* TOP BAR */
+.top-bar{position:relative;z-index:10;background:rgba(0,0,0,0.7);border-bottom:1px solid rgba(57,255,20,0.15);padding:14px 20px;display:flex;align-items:center;justify-content:center;gap:12px;backdrop-filter:blur(10px)}
+.top-bar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:#fff}
+.top-bar-logo span{color:var(--accent)}
+.status-pill{display:flex;align-items:center;gap:6px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);padding:4px 14px;border-radius:20px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* HERO CONFIRMAÇÃO */
+.hero-confirm{position:relative;z-index:5;text-align:center;padding:48px 20px 36px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(57,255,20,0.08) 0%,transparent 70%)}
+.confirm-icon{font-size:60px;display:block;margin-bottom:14px;animation:pop .5s cubic-bezier(.175,.885,.32,1.275) backwards}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.hero-confirm h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,8vw,64px);line-height:.95;color:#fff;margin-bottom:12px}
+.hero-confirm h1 em{font-style:normal;color:var(--green)}
+.hero-confirm p{font-size:17px;color:#9bb5c5;max-width:520px;margin:0 auto 28px;line-height:1.6}
+.confirm-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent2);margin-bottom:28px}
+
+/* WRAP */
+.wrap{max-width:680px;margin:0 auto;padding:0 20px 60px;position:relative;z-index:5}
+
+/* DOWNLOAD BOX */
+.download-box{background:rgba(57,255,20,0.06);border:2px solid rgba(57,255,20,0.3);border-radius:10px;padding:32px 24px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
+.download-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--cyan),var(--green));animation:shimmer 2s linear infinite;background-size:200%}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+.download-box h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,5vw,32px);letter-spacing:2px;color:#fff;margin-bottom:8px}
+.download-box p{font-size:15px;color:#9bb5c5;margin-bottom:24px;line-height:1.5}
+.btn-download{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#000;font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;text-decoration:none;padding:18px 48px;border-radius:5px;border:none;cursor:pointer;font-weight:900;transition:transform .15s,box-shadow .15s;box-shadow:0 0 30px rgba(57,255,20,0.5),0 4px 20px rgba(0,0,0,0.4);width:100%;max-width:420px}
+.btn-download:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(57,255,20,0.7),0 8px 30px rgba(0,0,0,0.4)}
+.btn-download:active{transform:translateY(0)}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 30px rgba(57,255,20,0.5)}50%{box-shadow:0 0 55px rgba(57,255,20,0.8)}}
+.btn-download{animation:pulse-green 2s ease-in-out infinite}
+.download-backup{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);margin-top:12px}
+.download-backup a{color:var(--green);text-decoration:underline}
+
+/* TRUST BADGES */
+.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 20px;padding:16px 0 28px}
+.trust-item{display:flex;align-items:center;gap:6px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.trust-item span{font-size:14px}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(57,255,20,0.2),transparent);margin:0 0 28px}
+
+/* SECTION LABEL */
+.section-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--green);opacity:.7;margin-bottom:8px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,6vw,40px);color:#fff;margin-bottom:6px}
+.section-title em{font-style:normal;color:var(--accent2)}
+.section-sub{font-size:15px;color:#7a9aaa;margin-bottom:20px;line-height:1.5}
+
+/* STEPS */
+.steps{display:grid;gap:10px;margin-bottom:24px}
+.step{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;background:rgba(255,184,0,0.03);border:1px solid rgba(255,184,0,0.1);border-radius:5px;transition:border-color .2s}
+.step:hover{border-color:rgba(255,184,0,0.25)}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:rgba(255,184,0,0.2);flex-shrink:0;width:40px;text-align:center}
+.step-body h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--accent2);margin-bottom:3px}
+.step-body p{font-size:14px;color:#7a9aaa;line-height:1.5}
+.step-tag{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;background:rgba(255,72,0,0.08);border:1px solid rgba(255,72,0,0.2);color:var(--accent);padding:2px 8px;border-radius:2px;margin-top:5px}
+
+/* BTN SECUNDÁRIO */
+.btn-secondary-dl{display:block;width:100%;text-align:center;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.3);color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;text-decoration:none;padding:16px;border-radius:5px;transition:background .2s,border-color .2s;margin-bottom:8px}
+.btn-secondary-dl:hover{background:rgba(57,255,20,0.15);border-color:rgba(57,255,20,0.5)}
+
+/* PRIMEIRO USO */
+.first-use{background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.12);border-radius:6px;padding:22px 20px;margin-bottom:24px}
+.first-use h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--cyan);margin-bottom:12px}
+.first-use ol{padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.first-use ol li{font-size:15px;color:#9bb5c5;line-height:1.5}
+.first-use ol li strong{color:#fff}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.faq-item{border:1px solid rgba(255,72,0,0.1);border-radius:4px;overflow:hidden}
+.faq-q{padding:14px 16px;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.5px;user-select:none}
+.faq-q:hover{background:rgba(255,72,0,0.04)}
+.faq-arrow{color:var(--accent);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;font-size:14px;color:#7a9aaa;line-height:1.6;padding:0 16px}
+.faq-item.open .faq-a{max-height:160px;padding:0 16px 14px}
+
+/* SUPORTE */
+.suporte-box{display:flex;align-items:center;gap:16px;padding:20px;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.12);border-radius:6px;margin-bottom:16px}
+.suporte-icon{font-size:34px;flex-shrink:0}
+.suporte-text h3{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:1px;color:var(--cyan);margin-bottom:3px}
+.suporte-text p{font-size:14px;color:#7a9aaa;line-height:1.4}
+.btn-wpp{display:block;width:100%;text-align:center;background:#25d366;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;text-decoration:none;padding:14px;border-radius:5px;transition:background .2s;margin-bottom:10px}
+.btn-wpp:hover{background:#1ebe5d}
+.btn-tg{display:block;width:100%;text-align:center;background:rgba(0,136,204,0.1);border:1px solid rgba(0,136,204,0.3);color:#42a5f5;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;text-decoration:none;padding:13px;border-radius:5px;transition:background .2s}
+.btn-tg:hover{background:rgba(0,136,204,0.2)}
+
+/* COUNTDOWN */
+.countdown-wrap{background:rgba(255,72,0,0.08);border:1px solid rgba(255,72,0,0.3);border-radius:8px;padding:16px 20px;text-align:center;margin-bottom:20px}
+.countdown-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.countdown-timer{display:flex;justify-content:center;align-items:flex-start;gap:8px}
+.countdown-block{text-align:center}
+.countdown-num{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;color:#fff;text-shadow:0 0 20px rgba(255,72,0,0.5)}
+.countdown-unit{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--dim);text-transform:uppercase}
+.countdown-sep{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--accent);opacity:.5;padding:2px 0}
+.offer-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.25);border-radius:20px;padding:4px 16px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-bottom:16px}
+/* FOOTER */
+footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.08);padding:28px 20px;text-align:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;color:var(--dim);margin-bottom:12px}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;list-style:none;margin-bottom:12px}
+.footer-links a{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none}
+.footer-links a:hover{color:var(--accent)}
+.copyright{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--dim);opacity:.5;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div><div class="orb orb2"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-logo">LEGIT <span>XIT</span></div>
+  <div class="status-pill"><div class="dot"></div>oferta por 24 horas</div>
+</div>
+
+<!-- HERO -->
+<div class="hero-confirm">
+  <span class="confirm-icon">🔥</span>
+  <div class="offer-tag"><span>⚡</span> bônus exclusivo — válido por 24h</div>
+  <h1>ACESSO <em>COMPLETO</em><br>POR APENAS R$0,99<br>NO PRIMEIRO MÊS</h1>
+  <div class="confirm-name" id="nomeUsuario"></div>
+  <p>Teste o Painel Legit XIT com todas as funções desbloqueadas por <strong style="color:#fff">R$0,99 no primeiro mês</strong>. Após o primeiro mês, apenas <strong style="color:var(--accent2)">R$4,99/mês</strong>. Se não gostar, cancele em até 7 dias e receba <strong style="color:#fff">reembolso total</strong> — sem perguntas.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-wrap">
+    <div class="countdown-label">⏰ oferta expira em:</div>
+    <div class="countdown-timer">
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdH">23</div>
+        <div class="countdown-unit">horas</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdM">59</div>
+        <div class="countdown-unit">minutos</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdS">59</div>
+        <div class="countdown-unit">segundos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD PRINCIPAL -->
+  <div class="download-box">
+    <h2>⬇️ BAIXAR E ATIVAR POR R$0,99</h2>
+    <p>Baixe o app, instale e ative o acesso completo por R$0,99 no primeiro mês. Cancele em até 7 dias e receba reembolso total.</p>
+    <a href="COLE_LINK_APK_AQUI" class="btn-download" id="btnDownload">
+      ⬇️ BAIXAR APLICATIVO AGORA
+    </a>
+    <div class="download-backup">Se o download não iniciar, <a href="COLE_LINK_APK_AQUI">toque aqui para baixar novamente</a></div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust-row">
+    <div class="trust-item"><span>💰</span> R$0,99 primeiro mês</div>
+    <div class="trust-item"><span>📅</span> depois R$4,99/mês</div>
+    <div class="trust-item"><span>↩️</span> cancele em 7 dias</div>
+    <div class="trust-item"><span>✅</span> reembolso total</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TUTORIAL -->
+  <div class="section-label">// instalação:</div>
+  <div class="section-title">COMO INSTALAR <em>EM 5 PASSOS</em></div>
+  <p class="section-sub">Siga o passo a passo abaixo. Se travar em algum ponto, chame o suporte no fim da página.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Clique no botão de download</h3>
+        <p>Aguarde o arquivo APK ser baixado no seu celular. Ele vai aparecer nas notificações ou na pasta Downloads.</p>
+        <span class="step-tag">⚠️ se o Chrome bloquear, clique em "baixar assim mesmo"</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Abra o arquivo baixado</h3>
+        <p>Toque no arquivo APK na pasta Downloads ou na notificação de download concluído.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Autorize a instalação</h3>
+        <p>Se o Android pedir permissão, vá em Configurações → Segurança → ative "Instalar apps desconhecidos". É rápido — menos de 30 segundos.</p>
+        <span class="step-tag">✅ configuração única — não precisa repetir</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Toque em Instalar</h3>
+        <p>Confirme a instalação e aguarde alguns segundos. O app aparece na sua tela normalmente.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>Abra e configure</h3>
+        <p>Abra o Painel Legit XIT igual a qualquer app. Siga a configuração inicial e comece a usar.</p>
+        <span class="step-tag">🎯 se aparecer aviso de segurança, chame o suporte</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÃO SECUNDÁRIO -->
+  <a href="COLE_LINK_APK_AQUI" class="btn-secondary-dl">⬇️ INSTALAR MEU APP</a>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center;margin-bottom:28px">se o botão não funcionar, <a href="COLE_LINK_APK_AQUI" style="color:var(--green)">clique aqui para o link alternativo</a></div>
+
+  <div class="divider"></div>
+
+  <!-- PRIMEIRO USO -->
+  <div class="section-label">// depois de instalar:</div>
+  <div class="section-title">O QUE FAZER NO <em>PRIMEIRO USO</em></div>
+  <div class="first-use">
+    <h3>🎯 Primeiros passos dentro do app</h3>
+    <ol>
+      <li><strong>Abra o aplicativo</strong> depois de instalado.</li>
+      <li><strong>Siga a configuração inicial</strong> que o app vai mostrar.</li>
+      <li><strong>Ative o recurso principal</strong> conforme o tutorial do app.</li>
+      <li><strong>Faça o primeiro teste</strong> dentro do Free Fire.</li>
+      <li>Se precisar, <strong>volte nesta página</strong> e reveja o tutorial ou chame o suporte.</li>
+    </ol>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <div class="section-label">// dúvidas frequentes:</div>
+  <div class="section-title">FAQ <em>RÁPIDO</em></div>
+  <div class="faq" style="margin-top:16px">
+    <div class="faq-item">
+      <div class="faq-q">Funciona em qualquer celular? <span class="faq-arrow">▶</span></div>
+      <div class="faq-a">Funciona em aparelhos Android compatíveis com instalação por APK. Se tiver dúvida sobre o seu aparelho, chame o suporte.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">O download não começou. E agora? <span class="faq-arrow">▶</span></div>
+      <div class="faq-a">Toque no botão novamente ou use o link alternativo de download que aparece abaixo do botão principal.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Apareceu bloqueio do Android. O que faço? <span class="faq-arrow">▶</span></div>
+      <div class="faq-a">Isso acontece quando o sistema pede autorização para instalar apps fora da loja. Vá em Configurações → Segurança → ative "Instalar apps desconhecidos" e tente novamente. Se não resolver, chame o suporte.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Como recebo ajuda? <span class="faq-arrow">▶</span></div>
+      <div class="faq-a">Entre em contato pelo WhatsApp ou pelo grupo oficial no Telegram. Nosso suporte responde e te ajuda a instalar na hora.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Funciona em iOS? <span class="faq-arrow">▶</span></div>
+      <div class="faq-a">O processo de instalação no iOS é diferente. Entre em contato com o suporte para receber o tutorial específico para o seu aparelho.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SUPORTE -->
+  <div class="section-label">// precisa de ajuda?</div>
+  <div class="section-title" style="margin-bottom:16px">FALE COM O <em>SUPORTE</em></div>
+  <div class="suporte-box">
+    <div class="suporte-icon">💬</div>
+    <div class="suporte-text">
+      <h3>Suporte rápido disponível</h3>
+      <p>Está com dificuldade para instalar? Manda mensagem — te ajudamos a instalar passo a passo.</p>
+    </div>
+  </div>
+  <a href="https://wa.me/SEUNUMERO" class="btn-wpp">📲 CHAMAR NO WHATSAPP</a>
+
+</div>
+
+<footer>
+  <div class="footer-logo">LEGIT XIT © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://legitxit.com.br/politica-de-suporte/">Política de Suporte</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-entrega/">Política de Entrega</a></li>
+    <li><a href="https://legitxit.com.br/termos-de-uso/">Termos de Uso</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-privacidade-2/">Privacidade</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-reembolso/">Reembolso</a></li>
+    <li><a href="https://legitxit.com.br/aviso-legal/">Aviso Legal</a></li>
+  </ul>
+  <div class="copyright">todos os direitos reservados — legitxit.com.br</div>
+</footer>
+
+<script>
+// Countdown 24h — salva no sessionStorage para persistir na sessão
+(function(){
+  const key='legitxit_offer_end';
+  let end=sessionStorage.getItem(key);
+  if(!end){
+    end=Date.now()+(24*60*60*1000);
+    sessionStorage.setItem(key,end);
+  }
+  function update(){
+    const diff=Math.max(0,end-Date.now());
+    const h=Math.floor(diff/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    document.getElementById('cdH').textContent=String(h).padStart(2,'0');
+    document.getElementById('cdM').textContent=String(m).padStart(2,'0');
+    document.getElementById('cdS').textContent=String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update,1000);
+})();
+
+// Nome personalizado via URL
+const params=new URLSearchParams(window.location.search);
+const nome=params.get('nome');
+if(nome){document.getElementById('nomeUsuario').textContent='Bem-vindo, '+nome+'!';}
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement,isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!isOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

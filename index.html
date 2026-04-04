@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legit XIT — Painel Free Fire</title>
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/747ccba6-d518-4ac0-8ba0-2ad47cfb019d/players/69d181c1ad6128baeb0b3c0e/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/747ccba6-d518-4ac0-8ba0-2ad47cfb019d/69d181bcc5b65f18922ef92e/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06080a;--accent:#ff4800;--accent2:#ffb800;--cyan:#00e5ff;--green:#39ff14;--text:#d8e4ec;--dim:#4a6070;--card:rgba(255,72,0,0.05)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;font-size:17px;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,72,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,72,0,0.02) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
+/* TICKER */
+.ticker{background:var(--accent);color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:15px;padding:8px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:10}
+.ticker-inner{display:inline-block;animation:scroll-left 30s linear infinite}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* HERO */
+.hero{position:relative;z-index:5;text-align:center;padding:56px 20px 44px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,72,0,0.12) 0%,transparent 70%)}
+.hero-eyebrow{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:5px;color:var(--accent);border:1px solid rgba(255,72,0,0.3);padding:5px 16px;border-radius:2px;margin-bottom:22px}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,10vw,82px);line-height:.92;color:#fff;text-shadow:0 0 40px rgba(255,72,0,0.35);margin-bottom:14px}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:clamp(17px,4vw,24px);font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.hero-sub2{font-size:15px;color:#7a9aaa;margin-bottom:30px}
+/* STAT BAR */
+.stat-bar{position:relative;z-index:5;display:flex;justify-content:center;background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,72,0,0.2);border-bottom:1px solid rgba(255,72,0,0.2);padding:18px 0;margin-bottom:64px;flex-wrap:wrap}
+.stat{text-align:center;padding:10px 28px;border-right:1px solid rgba(255,72,0,0.15)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--accent);line-height:1}
+.stat-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:2px}
+/* SECTIONS */
+section{position:relative;z-index:5;max-width:800px;margin:0 auto;padding:0 20px 64px}
+.section-tag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);opacity:.7;margin-bottom:10px}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,7vw,52px);line-height:1;color:#fff;margin-bottom:14px}
+h2 em{font-style:normal;color:var(--accent)}
+h2 .yellow{color:var(--accent2)}
+.lead{font-size:18px;color:#9bb5c5;margin-bottom:32px;line-height:1.6}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,72,0,0.3),transparent);margin:0 auto 64px;max-width:800px;position:relative;z-index:5}
+/* PAIN */
+.pain-list{display:grid;gap:10px;margin-bottom:32px}
+.pain-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:rgba(255,72,0,0.04);border:1px solid rgba(255,72,0,0.12);border-radius:3px;font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.pain-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:32px}
+.feature-card{padding:20px 18px;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.1);border-radius:3px;transition:border-color .2s,background .2s}
+.feature-card:hover{border-color:rgba(0,229,255,0.25);background:rgba(0,229,255,0.06)}
+.feature-icon{font-size:26px;margin-bottom:8px;display:block}
+.feature-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--cyan);margin-bottom:5px}
+.feature-desc{font-size:13px;color:#7a9aaa;line-height:1.5}
+/* STEPS */
+.steps{display:grid;gap:14px;margin-bottom:32px}
+.step{display:flex;gap:18px;align-items:flex-start;padding:18px 20px;background:rgba(255,184,0,0.03);border:1px solid rgba(255,184,0,0.1);border-radius:3px}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:rgba(255,184,0,0.15);flex-shrink:0;width:46px;text-align:center}
+.step-body h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--accent2);margin-bottom:4px}
+.step-body p{font-size:14px;color:#7a9aaa;line-height:1.5}
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:32px}
+.testi{background:rgba(57,255,20,0.03);border:1px solid rgba(57,255,20,0.1);border-radius:3px;padding:16px;font-size:14px;color:#9bb5c5;line-height:1.5}
+.testi-name{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;margin-top:10px}
+/* CAPTURE */
+.capture-box{background:rgba(255,72,0,0.06);border:1px solid rgba(255,72,0,0.25);border-radius:6px;padding:36px 28px;text-align:center;position:relative;overflow:hidden;margin-bottom:32px}
+.capture-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent))}
+.capture-box h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:#fff;margin-bottom:8px}
+.capture-box p{font-size:15px;color:#9bb5c5;margin-bottom:24px;line-height:1.5}
+.form-row{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto}
+.form-input{background:rgba(0,0,0,0.5);border:1px solid rgba(255,72,0,0.2);border-radius:3px;padding:14px 18px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;outline:none;transition:border-color .2s;width:100%}
+.form-input::placeholder{color:var(--dim)}
+.form-input:focus{border-color:var(--accent)}
+.form-note{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);margin-top:10px}
+/* PRICING */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+@media(max-width:560px){.pricing{grid-template-columns:1fr}}
+.plan{border:1px solid rgba(255,72,0,0.2);border-radius:4px;padding:26px 22px;background:var(--card);position:relative;text-align:center}
+.plan.featured{border-color:var(--accent);background:rgba(255,72,0,0.08);box-shadow:0 0 30px rgba(255,72,0,0.1)}
+.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:3px 16px;border-radius:2px;white-space:nowrap}
+.plan-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#fff;margin-bottom:18px;margin-top:8px}
+.plan-features{list-style:none;text-align:left;margin-bottom:22px;display:flex;flex-direction:column;gap:7px}
+.plan-features li{font-size:14px;display:flex;align-items:flex-start;gap:8px;color:#9bb5c5}
+.plan-features li::before{content:'✓';color:var(--green);font-weight:bold;flex-shrink:0}
+.plan-old{font-size:13px;color:var(--dim);text-decoration:line-through;margin-bottom:4px}
+.plan-price{font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--accent2);line-height:1;margin-bottom:5px}
+.plan-period{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-bottom:18px}
+/* GUARANTEE */
+.guarantee-box{display:flex;align-items:center;gap:18px;padding:22px;background:rgba(57,255,20,0.04);border:1px solid rgba(57,255,20,0.15);border-radius:4px;margin-bottom:32px}
+.guarantee-icon{font-size:40px;flex-shrink:0}
+.guarantee-text h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--green);margin-bottom:4px}
+.guarantee-text p{font-size:14px;color:#7a9aaa;line-height:1.5}
+/* FAQ */
+/* CAROUSEL INFLUENCERS */
+.carousel-wrap{position:relative;z-index:5;overflow:hidden;padding:0 20px 20px;max-width:800px;margin:0 auto}
+.carousel-track-outer{overflow:hidden;border-radius:6px}
+.carousel-track{display:flex;gap:12px;transition:transform .4s ease}
+.carousel-slide{flex:0 0 calc(50% - 6px);position:relative;border-radius:6px;overflow:hidden;background:#000;aspect-ratio:16/9;cursor:pointer;border:1px solid rgba(255,72,0,0.15)}
+@media(max-width:560px){.carousel-slide{flex:0 0 100%}}
+.carousel-thumb{width:100%;height:100%;object-fit:cover;display:block;transition:filter .3s;filter:brightness(.8)}
+.carousel-slide:hover .carousel-thumb{filter:brightness(1)}
+.carousel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.carousel-play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,72,0,.85);display:flex;align-items:center;justify-content:center;font-size:18px;transition:transform .2s}
+.carousel-slide:hover .carousel-play-btn{transform:scale(1.1)}
+.carousel-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.carousel-controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:14px;margin-bottom:32px}
+.carousel-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,72,0,0.1);border:1px solid rgba(255,72,0,0.3);color:var(--accent);font-size:15px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center}
+.carousel-btn:hover{background:rgba(255,72,0,0.25)}
+.carousel-dots{display:flex;gap:6px;align-items:center}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);cursor:pointer;transition:background .2s,transform .2s}
+.carousel-dot.active{background:var(--accent);transform:scale(1.4)}
+/* MODAL VIDEO */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-inner{width:100%;max-width:800px;position:relative}
+.modal-close{display:block;text-align:right;color:#fff;font-size:13px;cursor:pointer;font-family:'Share Tech Mono',monospace;letter-spacing:3px;opacity:.7;margin-bottom:8px;text-transform:uppercase}
+.modal-close:hover{opacity:1}
+.modal-box{width:100%;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden}
+.modal-box iframe{width:100%;height:100%;border:none}
+/* SOCIAL PROOF TICKER */
+.proof-ticker-wrap{position:relative;z-index:5;overflow:hidden;padding:0 0 20px;margin-bottom:32px}
+.proof-ticker-wrap::before,.proof-ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.proof-ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.proof-ticker-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.proof-ticker{display:flex;gap:14px;width:max-content;animation:ticker-scroll 30s linear infinite}
+.proof-ticker:hover{animation-play-state:paused}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.proof-ticker-card{flex-shrink:0;width:260px;background:#0e1a10;border:1px solid rgba(57,255,20,0.15);border-radius:10px;overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer}
+.proof-ticker-card:hover{border-color:rgba(57,255,20,0.4);transform:scale(1.02)}
+.proof-ticker-card img{width:100%;display:block;object-fit:cover}
+/* VIDEO PROOF */
+.vproof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:32px}
+.vproof-item{position:relative;border-radius:5px;overflow:hidden;aspect-ratio:9/16;background:#000;border:1px solid rgba(0,229,255,0.12);cursor:pointer}
+.vproof-img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.7);transition:filter .3s}
+.vproof-item:hover .vproof-img{filter:brightness(.9)}
+.vproof-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vproof-play-btn{width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,.8);display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .2s}
+.vproof-item:hover .vproof-play-btn{transform:scale(1.1)}
+.vproof-tag{position:absolute;bottom:0;left:0;right:0;padding:7px 10px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase}
+.faq{display:flex;flex-direction:column;gap:6px;margin-bottom:32px}
+.faq-item{border:1px solid rgba(255,72,0,0.1);border-radius:3px;overflow:hidden}
+.faq-q{padding:15px 18px;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.5px;user-select:none}
+.faq-q:hover{background:rgba(255,72,0,0.04)}
+.faq-arrow{color:var(--accent);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;font-size:14px;color:#7a9aaa;line-height:1.6;padding:0 18px}
+.faq-item.open .faq-a{max-height:200px;padding:0 18px 14px}
+/* BUTTONS */
+.btn{display:inline-block;background:var(--accent);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;text-decoration:none;padding:16px 40px;border-radius:3px;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s;box-shadow:0 0 20px rgba(255,72,0,0.4),0 4px 20px rgba(0,0,0,0.4);text-align:center}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(255,72,0,0.55),0 8px 30px rgba(0,0,0,0.4)}
+.btn:active{transform:translateY(0)}
+.btn-full{display:block;width:100%}
+.btn-lg{font-size:26px;padding:18px 44px}
+.btn-secondary{background:transparent;border:1px solid rgba(255,72,0,0.3);color:#fff}
+.btn-secondary:hover{border-color:var(--accent);background:rgba(255,72,0,0.08)}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(255,72,0,0.4),0 4px 20px rgba(0,0,0,0.4)}50%{box-shadow:0 0 40px rgba(255,72,0,0.7),0 4px 30px rgba(0,0,0,0.4)}}
+.pulse{animation:pulse-glow 2s ease-in-out infinite}
+/* TRUST */
+.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:14px 24px;margin-top:18px}
+.trust-item{display:flex;align-items:center;gap:7px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.trust-item span{font-size:15px}
+/* STICKY */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(6,8,10,0.96);border-top:1px solid rgba(255,72,0,0.3);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:100;backdrop-filter:blur(10px);transform:translateY(100%);transition:transform .4s ease}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-text{font-size:15px;font-weight:700;flex:1}
+.sticky-text strong{color:var(--accent2)}
+@media(max-width:480px){.sticky-text{display:none}.sticky-bar .btn{width:100%}}
+/* MISC */
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px)}
+.orb1{width:500px;height:500px;background:rgba(255,72,0,0.06);top:-150px;left:-150px}
+.orb2{width:400px;height:400px;background:rgba(0,229,255,0.03);bottom:-100px;right:-100px}
+.dot-green{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);display:inline-block;margin-right:6px;animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.1);padding:32px 20px;text-align:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;color:var(--dim);margin-bottom:14px}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;list-style:none;margin-bottom:14px}
+.footer-links a{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none}
+.footer-links a:hover{color:var(--accent)}
+.copyright{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--dim);opacity:.5;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div><div class="orb orb2"></div>
+
+<!-- TICKER -->
+<div class="ticker"><span class="ticker-inner">🔥 SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; 🔥 SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp; SEASON 26 &nbsp;✦&nbsp; 2K26 &nbsp;✦&nbsp;</span></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow"><span class="dot-green"></span>painel atualizado — season 26</div>
+  <h1>ESSE ASSISTENTE<br>DE MIRA <span>TRANSFORMOU</span><br>+20.000 PLAYERS</h1>
+  <p class="hero-sub">em uma máquina de capa — sem risco de ban</p>
+
+  <!-- VIDEO VTURB -->
+  <div style="max-width:700px;margin:0 auto 30px;position:relative;z-index:5;">
+    <vturb-smartplayer id="vid-69d181c1ad6128baeb0b3c0e" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+    <script type="text/javascript">
+      (function(){
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/747ccba6-d518-4ac0-8ba0-2ad47cfb019d/players/69d181c1ad6128baeb0b3c0e/v4/player.js";
+        s.async=true;
+        document.head.appendChild(s);
+      })();
+    </script>
+  </div>
+
+  <a href="#combo" class="btn btn-lg pulse">SAIBA MAIS →</a>
+  <div class="trust">
+    <div class="trust-item"><span>🛡️</span> 100% Anti-Ban</div>
+    <div class="trust-item"><span>📱</span> Android, iOS e Emulador</div>
+    <div class="trust-item"><span>⚡</span> Acesso Imediato</div>
+    <div class="trust-item"><span>↩️</span> 7 dias de garantia</div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat"><div class="stat-num">+20K</div><div class="stat-label">players ativos</div></div>
+  <div class="stat"><div class="stat-num">50</div><div class="stat-label">funções no painel</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">anti-ban</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">bans registrados</div></div>
+</div>
+
+<!-- PARA QUEM -->
+<section>
+  <div class="section-tag">// o painel é pra você que:</div>
+  <h2>VOCÊ SE <em>IDENTIFICA</em><br>COM ALGUM DISSO?</h2>
+  <div class="pain-list">
+    <div class="pain-item"><span class="pain-icon">💀</span>Não aceita perder x1 para seus inimigos e tem dificuldades em ganhar partidas no geral</div>
+    <div class="pain-item"><span class="pain-icon">🎯</span>Sua sensi não acompanha sua habilidade e você erra miras que não deveria errar</div>
+    <div class="pain-item"><span class="pain-icon">😤</span>Já tentou vários métodos de configuração na internet e nenhum funcionou de verdade</div>
+    <div class="pain-item"><span class="pain-icon">🏆</span>Quer subir de rank mas sente que algo te segura — não é skill, é configuração</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FUNCIONALIDADES -->
+<section>
+  <div class="section-tag">// o que você recebe:</div>
+  <h2>PAINEL <em>LEGIT XIT</em><br>COM <span class="yellow">50 FUNÇÕES</span></h2>
+  <p class="lead">Recomendado por pro-players campeões, influencers verificados e streamers famosos. Teste a versão inicial grátis — pague só se quiser o acesso completo.</p>
+  <div class="features-grid">
+    <div class="feature-card"><span class="feature-icon">🎯</span><div class="feature-title">Head Tracking</div><div class="feature-desc">Assistente de mira que reconhece apenas cabeças do inimigo. Zero travamento de conta.</div></div>
+    <div class="feature-card"><span class="feature-icon">📐</span><div class="feature-title">Sensi Builder</div><div class="feature-desc">Construtor de sensibilidade personalizado para o seu estilo de jogo e dispositivo.</div></div>
+    <div class="feature-card"><span class="feature-icon">🏅</span><div class="feature-title">5 Métodos Full Capa</div><div class="feature-desc">5 configurações exclusivas para x1, ranked, squad — desbloqueadas no premium.</div></div>
+    <div class="feature-card"><span class="feature-icon">🛡️</span><div class="feature-title">100% Anti-Ban</div><div class="feature-desc">Nenhum ban registrado entre nossos +20.000 players. Tecnologia segura e testada.</div></div>
+    <div class="feature-card"><span class="feature-icon">📱</span><div class="feature-title">Todos os Devices</div><div class="feature-desc">Funciona em Android, iOS e Emulador. Qualquer aparelho, qualquer configuração.</div></div>
+    <div class="feature-card"><span class="feature-icon">💬</span><div class="feature-title">Suporte VIP + Grupo</div><div class="feature-desc">Suporte dedicado + grupo VIP no Telegram com atualizações em primeira mão.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PASSOS -->
+<section>
+  <div class="section-tag">// como funciona:</div>
+  <h2>DO CADASTRO AO<br><em>PRIMEIRO CAPA</em> EM 4 PASSOS</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Informe seu WhatsApp</h3><p>Você recebe o link do APK e o tutorial completo de instalação.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Baixe e instale em minutos</h3><p>Sem mexer em arquivos ou pastas complicadas. Abre o Painel Legit XIT igual a qualquer app normal.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Teste a versão inicial grátis</h3><p>Use os recursos liberados da versão grátis e sinta a diferença na primeira partida — sem pagar nada ainda.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Desbloqueie o premium se quiser</h3><p>Se gostar (e vai gostar), ativa o acesso completo por R$0,99 no primeiro mês — direto dentro do app.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DEPOIMENTOS -->
+<section>
+  <div class="section-tag">// players que já usam:</div>
+  <h2>OS PLAYERS AGRADECEM<br>A <em>LEGIT</em> TODO DIA</h2>
+  <div class="testimonials">
+    <div class="testi">"Cara, era exatamente o que eu precisava. Subiu duas divisões em uma semana. O head tracking é insano."<div class="testi-name">⭐ GabrielXIT — Diamante</div></div>
+    <div class="testi">"Usei o suporte pra instalar e me atenderam na hora. Muito profissional. Nunca tomei ban."<div class="testi-name">⭐ Lucas_FF26 — Grão-Mestre</div></div>
+    <div class="testi">"Testei a versão grátis primeiro. Em dois dias ativei o premium sem pensar duas vezes."<div class="testi-name">⭐ Kaká_Plays — Heroico</div></div>
+    <div class="testi">"Vale muito mais do que R$0,99. Faz 4 meses que uso e não saio mais."<div class="testi-name">⭐ MK_Sniper — Diamante</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CARROSSEL INFLUENCERS -->
+<section>
+  <div class="section-tag">// quem recomenda:</div>
+  <h2>A LEGIT É RECOMENDADA POR<br><em>PRO-PLAYERS, INFLUENCERS</em><br><span class="yellow">E STREAMERS FAMOSOS</span></h2>
+  <p class="lead">Campeões verificados, criadores com milhões de seguidores e streamers profissionais — todos usam e recomendam a Legit.</p>
+</section>
+
+<div class="carousel-wrap" id="carouselInflu">
+  <div class="carousel-track-outer">
+    <div class="carousel-track" id="trackInflu">
+      <div class="carousel-slide" data-yt="qRGtKxsKQJQ">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/qRGtKxsKQJQ/hqdefault.jpg" alt="Influencer 1">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ pro-player verificado</div>
+      </div>
+      <div class="carousel-slide" data-yt="v8DO-EuuCwI">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/v8DO-EuuCwI/hqdefault.jpg" alt="Influencer 2">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ streamer verificado</div>
+      </div>
+      <div class="carousel-slide" data-yt="syBSYnf6GUk">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/syBSYnf6GUk/hqdefault.jpg" alt="Influencer 3">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ influencer verificado</div>
+      </div>
+      <div class="carousel-slide" data-yt="689nvaxTYkI">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/689nvaxTYkI/hqdefault.jpg" alt="Influencer 4">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ pro-player campeão</div>
+      </div>
+      <div class="carousel-slide" data-yt="i_qjw35ytOA">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/i_qjw35ytOA/hqdefault.jpg" alt="Influencer 5">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ streamer famoso</div>
+      </div>
+      <div class="carousel-slide" data-yt="TOPpgcBrobE">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/TOPpgcBrobE/hqdefault.jpg" alt="Influencer 6">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ influencer top br</div>
+      </div>
+      <div class="carousel-slide" data-yt="q_z2WrvWthI">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/q_z2WrvWthI/hqdefault.jpg" alt="Influencer 7">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ streamer top br</div>
+      </div>
+      <div class="carousel-slide" data-yt="4Vgkwq2352o">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/4Vgkwq2352o/hqdefault.jpg" alt="LOUD Dionis">
+        <div class="carousel-play"><div class="carousel-play-btn">▶</div></div>
+        <div class="carousel-label">⭐ loud dionis</div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button class="carousel-btn" onclick="slideCarousel('trackInflu','dotsInflu',-1)">◀</button>
+    <div class="carousel-dots" id="dotsInflu"></div>
+    <button class="carousel-btn" onclick="slideCarousel('trackInflu','dotsInflu',1)">▶</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROVAS SOCIAIS — SCREENSHOTS WHATSAPP -->
+<section>
+  <div class="section-tag">// players normais agradecem:</div>
+  <h2>OS PLAYERS AGRADECEM<br>A <em>LEGIT</em> TODOS OS DIAS POR...</h2>
+  <p class="lead" style="text-transform:uppercase;font-weight:700;font-size:16px;color:var(--accent2)">Destravar o poder da sensi no x1, ganhar partidas valendo, aumentar a taxa de capa e sair do platina ou pegar mestre — sem medo de ban.</p>
+</section>
+
+<!-- TICKER PROVAS SOCIAIS -->
+<div class="proof-ticker-wrap">
+  <div class="proof-ticker" id="proofTicker">
+    <!-- set 1 -->
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.55_6_11zon-300x235.webp" alt="Prova 1" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57-1_4_11zon-300x135.webp" alt="Prova 2" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57-2_3_11zon-300x122.webp" alt="Prova 3" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57_5_11zon-300x102.webp" alt="Prova 4" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.58_2_11zon-300x275.webp" alt="Prova 5" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.59_1_11zon-300x259.webp" alt="Prova 6" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <!-- set 2 (duplicado para loop infinito) -->
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.55_6_11zon-300x235.webp" alt="Prova 1" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57-1_4_11zon-300x135.webp" alt="Prova 2" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57-2_3_11zon-300x122.webp" alt="Prova 3" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.57_5_11zon-300x102.webp" alt="Prova 4" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.58_2_11zon-300x275.webp" alt="Prova 5" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="proof-ticker-card"><img src="https://legitxit.com.br/wp-content/uploads/2024/04/WhatsApp-Image-2024-02-21-at-19.54.59_1_11zon-300x259.webp" alt="Prova 6" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+  </div>
+</div>
+
+<section style="padding-top:0">
+  <div style="text-align:center">
+    <a href="#receber" class="btn pulse">QUERO SER O PRÓXIMO →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HEADTRACKING EM AÇÃO — CARROSSEL DE VÍDEOS -->
+<section>
+  <div class="section-tag">// veja funcionar:</div>
+  <h2>CONFIRA O <em>HEADTRACKING</em><br>EM AÇÃO!</h2>
+  <p class="lead">Vídeos reais de players usando o Painel Legit XIT. Veja a mira trabalhando e o resultado na tela.</p>
+</section>
+
+<div class="carousel-wrap" id="carouselVid">
+  <div class="carousel-track-outer">
+    <div class="carousel-track" id="trackVid">
+      <div class="carousel-slide" data-yt="qRGtKxsKQJQ">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/qRGtKxsKQJQ/hqdefault.jpg" alt="HT em ação 1">
+        <div class="carousel-play"><div class="carousel-play-btn" style="background:rgba(0,229,255,.8)">▶</div></div>
+        <div class="carousel-label" style="color:var(--cyan)">🎯 headtracking ao vivo</div>
+      </div>
+      <div class="carousel-slide" data-yt="v8DO-EuuCwI">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/v8DO-EuuCwI/hqdefault.jpg" alt="HT em ação 2">
+        <div class="carousel-play"><div class="carousel-play-btn" style="background:rgba(0,229,255,.8)">▶</div></div>
+        <div class="carousel-label" style="color:var(--cyan)">🎯 resultado real</div>
+      </div>
+      <div class="carousel-slide" data-yt="syBSYnf6GUk">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/syBSYnf6GUk/hqdefault.jpg" alt="HT em ação 3">
+        <div class="carousel-play"><div class="carousel-play-btn" style="background:rgba(0,229,255,.8)">▶</div></div>
+        <div class="carousel-label" style="color:var(--cyan)">🎯 capa confirmada</div>
+      </div>
+      <div class="carousel-slide" data-yt="689nvaxTYkI">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/689nvaxTYkI/hqdefault.jpg" alt="HT em ação 4">
+        <div class="carousel-play"><div class="carousel-play-btn" style="background:rgba(0,229,255,.8)">▶</div></div>
+        <div class="carousel-label" style="color:var(--cyan)">🎯 x1 vencido</div>
+      </div>
+      <div class="carousel-slide" data-yt="TOPpgcBrobE">
+        <img class="carousel-thumb" src="https://img.youtube.com/vi/TOPpgcBrobE/hqdefault.jpg" alt="HT em ação 5">
+        <div class="carousel-play"><div class="carousel-play-btn" style="background:rgba(0,229,255,.8)">▶</div></div>
+        <div class="carousel-label" style="color:var(--cyan)">🎯 full capa</div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button class="carousel-btn" style="border-color:rgba(0,229,255,0.3);color:var(--cyan)" onclick="slideCarousel('trackVid','dotsVid',-1)">◀</button>
+    <div class="carousel-dots" id="dotsVid"></div>
+    <button class="carousel-btn" style="border-color:rgba(0,229,255,0.3);color:var(--cyan)" onclick="slideCarousel('trackVid','dotsVid',1)">▶</button>
+  </div>
+</div>
+
+<!-- MODAL VÍDEO YOUTUBE -->
+<div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
+  <div class="modal-inner">
+    <div class="modal-close" onclick="closeModal()">✕ FECHAR</div>
+    <div class="modal-box">
+      <iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CAPTURA DE LEAD -->
+<section id="receber">
+  <div class="section-tag">// receba agora:</div>
+  <h2>INFORME SEU <em>WHATSAPP</em><br>E RECEBA O APK NA HORA</h2>
+  <div class="capture-box">
+    <h3>🔥 TESTE GRÁTIS — SEM COMPROMISSO</h3>
+    <p>Informe seu nome e WhatsApp para receber o link de download e o tutorial de instalação passo a passo agora mesmo.</p>
+    <div class="form-row">
+      <input class="form-input" type="text" id="nome" placeholder="Seu nome" autocomplete="off">
+      <input class="form-input" type="tel" id="whats" placeholder="Seu WhatsApp com DDD" autocomplete="off">
+      <button class="btn btn-full pulse" onclick="submitLead()" style="font-size:20px;padding:16px;">RECEBER APK AGORA →</button>
+    </div>
+    <div class="form-note">🔒 seus dados são privados — não enviamos spam</div>
+  </div>
+  <div class="guarantee-box">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-text">
+      <h3>Teste grátis + garantia de 7 dias</h3>
+      <p>Você usa a versão inicial sem pagar nada. Se ativar o premium e não gostar, devolvemos cada centavo — sem treta, sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLANOS -->
+<section id="combo">
+  <div class="section-tag">// quando quiser desbloquear tudo:</div>
+  <h2>ESCOLHA SEU <em>PLANO</em></h2>
+  <div class="pricing">
+    <div class="plan">
+      <div class="plan-name">Painel Mensal<br><span style="font-size:13px;font-family:'Rajdhani';font-weight:400;color:var(--dim)">30 dias de acesso</span></div>
+      <ul class="plan-features"><li>100% Anti-Ban</li><li>Android, iOS e Emulador</li><li>Painel com 15 funções</li><li>Grupo VIP no Telegram</li></ul>
+      <div class="plan-old">de R$10,00</div>
+      <div class="plan-price">R$0,99</div>
+      <div class="plan-period">primeiro mês — cancele se não gostar</div>
+      <a href="obrigado.html" class="btn btn-secondary btn-full">COMEÇAR POR R$0,99</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">🔥 MAIS VENDIDO</div>
+      <div class="plan-name">Painel Permanente<br><span style="font-size:13px;font-family:'Rajdhani';font-weight:400;color:#ff8855">pague uma vez, use pra sempre</span></div>
+      <ul class="plan-features"><li>100% Anti-Ban</li><li>Android, iOS e Emulador</li><li>Painel com 50 funções</li><li>5 Métodos Full Capa</li><li>Suporte VIP dedicado</li><li>Grupo VIP no Telegram</li><li>+ 4 BÔNUS SECRETOS</li><li>Atualizações para sempre</li></ul>
+      <div class="plan-old">de R$358,00</div>
+      <div class="plan-price">R$29,90</div>
+      <div class="plan-period">pagamento único — acesso vitalício</div>
+      <a href="obrigado.html" class="btn btn-full pulse">COMPRAR COM DESCONTO →</a>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <a href="obrigado.html" class="btn btn-lg">TESTAR GRÁTIS PRIMEIRO →</a>
+    <div class="trust" style="margin-top:14px">
+      <div class="trust-item"><span>🔒</span> Pagamento Seguro</div>
+      <div class="trust-item"><span>⚡</span> Acesso Imediato</div>
+      <div class="trust-item"><span>📲</span> Receba pelo WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section>
+  <div class="section-tag">// dúvidas frequentes:</div>
+  <h2>PERGUNTAS <em>FREQUENTES</em></h2>
+  <div class="faq">
+    <div class="faq-item"><div class="faq-q">O teste é gratuito? <span class="faq-arrow">▶</span></div><div class="faq-a">Sim! Você baixa o APK, instala e usa a versão inicial sem pagar nada. O premium é opcional — aparece dentro do app quando você quiser desbloquear tudo.</div></div>
+    <div class="faq-item"><div class="faq-q">Funciona em quais aparelhos? <span class="faq-arrow">▶</span></div><div class="faq-a">O Painel Legit XIT funciona em Android, iOS e Emulador. Se tiver dúvida sobre seu aparelho, é só chamar nosso suporte.</div></div>
+    <div class="faq-item"><div class="faq-q">Precisa desinstalar algo antes? <span class="faq-arrow">▶</span></div><div class="faq-a">Não! Você instala o Painel Legit XIT normalmente, igual a qualquer app. Sem apagar nada, sem configurações complicadas.</div></div>
+    <div class="faq-item"><div class="faq-q">A Legit ajuda na instalação? <span class="faq-arrow">▶</span></div><div class="faq-a">Com certeza! Você recebe um vídeo tutorial completo junto com o APK. Se precisar de ajuda extra, nosso suporte responde pelo WhatsApp.</div></div>
+    <div class="faq-item"><div class="faq-q">O que desbloqueia no premium? <span class="faq-arrow">▶</span></div><div class="faq-a">No premium você acessa as 50 funções completas, 5 Métodos Full Capa, suporte VIP, grupo no Telegram e 4 bônus secretos. A versão grátis libera uma parte para você testar antes.</div></div>
+    <div class="faq-item"><div class="faq-q">E se eu não gostar? <span class="faq-arrow">▶</span></div><div class="faq-a">Você tem 7 dias de garantia total. Se não gostar por qualquer motivo, devolvemos cada centavo — sem treta.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">LEGIT XIT © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://legitxit.com.br/politica-de-suporte/">Política de Suporte</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-entrega/">Política de Entrega</a></li>
+    <li><a href="https://legitxit.com.br/termos-de-uso/">Termos de Uso</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-privacidade-2/">Privacidade</a></li>
+    <li><a href="https://legitxit.com.br/politica-de-reembolso/">Reembolso</a></li>
+    <li><a href="https://legitxit.com.br/aviso-legal/">Aviso Legal</a></li>
+  </ul>
+  <div class="copyright">todos os direitos reservados — legitxit.com.br</div>
+</footer>
+
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-text">🔥 Teste agora — premium por <strong>R$0,99</strong> no primeiro mês</div>
+  <a href="obrigado.html" class="btn" style="font-size:16px;padding:12px 22px;">TESTAR POR R$0,99</a>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement,isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!isOpen)item.classList.add('open');
+  });
+});
+window.addEventListener('scroll',()=>{
+  document.getElementById('stickyBar').classList.toggle('show',window.scrollY>400);
+});
+// ── CAROUSEL ──
+const carouselState={};
+function initCarousel(trackId,dotsId){
+  const track=document.getElementById(trackId);
+  const dotsEl=document.getElementById(dotsId);
+  if(!track||!dotsEl)return;
+  // bind click on slides
+  track.querySelectorAll('.carousel-slide').forEach(slide=>{
+    slide.onclick=()=>{
+      const ytId=slide.getAttribute('data-yt');
+      if(ytId&&!ytId.startsWith('ID_')) openModal(ytId);
+      else alert('Vídeo em breve — cole o ID do YouTube neste slide.');
+    };
+    // use YouTube thumbnail if data-yt set and not placeholder
+    const ytId=slide.getAttribute('data-yt');
+    const img=slide.querySelector('.carousel-thumb');
+    if(ytId&&!ytId.startsWith('ID_')&&img){
+      img.src='https://img.youtube.com/vi/'+ytId+'/hqdefault.jpg';
+    }
+  });
+  const slides=track.querySelectorAll('.carousel-slide');
+  const perView=window.innerWidth<=560?1:2;
+  const total=Math.ceil(slides.length/perView);
+  carouselState[trackId]={pos:0,total,perView};
+  dotsEl.innerHTML='';
+  for(let i=0;i<total;i++){
+    const d=document.createElement('div');
+    d.className='carousel-dot'+(i===0?' active':'');
+    d.onclick=()=>goCarousel(trackId,dotsId,i);
+    dotsEl.appendChild(d);
+  }
+  updateCarousel(trackId,dotsId);
+}
+function updateCarousel(trackId,dotsId){
+  const s=carouselState[trackId];if(!s)return;
+  const track=document.getElementById(trackId);
+  const slide=track.querySelector('.carousel-slide');
+  if(!slide)return;
+  const slideW=slide.offsetWidth+12;
+  track.style.transform=`translateX(-${s.pos*s.perView*slideW}px)`;
+  document.querySelectorAll(`#${dotsId} .carousel-dot`).forEach((d,i)=>d.classList.toggle('active',i===s.pos));
+}
+function slideCarousel(trackId,dotsId,dir){
+  const s=carouselState[trackId];if(!s)return;
+  s.pos=(s.pos+dir+s.total)%s.total;
+  updateCarousel(trackId,dotsId);
+}
+function goCarousel(trackId,dotsId,idx){
+  carouselState[trackId].pos=idx;
+  updateCarousel(trackId,dotsId);
+}
+// ── WPP CAROUSEL ──
+let wppPos=0,wppTotal=0,wppTimer=null;
+function initWpp(){}
+function slideWpp(){}
+function goWpp(){}
+window.addEventListener('load',()=>{
+  initCarousel('trackInflu','dotsInflu');
+  initCarousel('trackVid','dotsVid');
+  initWpp();
+});
+window.addEventListener('resize',()=>{
+  initCarousel('trackInflu','dotsInflu');
+  initCarousel('trackVid','dotsVid');
+  initWpp();
+});
+// ── MODAL YOUTUBE ──
+function openModal(ytId){
+  document.getElementById('modalIframe').src='https://www.youtube.com/embed/'+ytId+'?autoplay=1&rel=0';
+  document.getElementById('videoModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('videoModal')&&!e.target.classList.contains('modal-close'))return;
+  document.getElementById('modalIframe').src='';
+  document.getElementById('videoModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function submitLead(){
+  const nome=document.getElementById('nome').value.trim();
+  const whats=document.getElementById('whats').value.trim();
+  if(!nome||!whats){alert('Preencha seu nome e WhatsApp para continuar.');return;}
+  // INTEGRE AQUI: envie nome+whats para seu CRM/WhatsApp/planilha
+  window.location.href='obrigado.html?nome='+encodeURIComponent(nome);
+}
+</script>
+</body>
+</html>
