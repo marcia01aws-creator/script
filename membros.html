@@ -950,7 +950,7 @@ body::after{
 
       <div class="pix-key-box" onclick="copyPix()">
         <div class="pix-key-label">chave pix · cnpj</div>
-        <div class="pix-key-value" id="pixKeyDisplay">42.774.748/0001-91</div>
+        <div class="pix-key-value" id="pixKeyDisplay">41.843.045/0001-05</div>
       </div>
       <div class="pix-key-hint" id="pixCopyHint">📋 toque para copiar a chave</div>
 
@@ -1213,7 +1213,7 @@ function closePixOutside(e){
   if(e.target===document.getElementById('pixOverlay'))closePixPopup();
 }
 function copyPix(){
-  const key='42.774.748/0001-91';
+  const key='41.843.045/0001-05';
   navigator.clipboard.writeText(key).then(()=>{
     const hint=document.getElementById('pixCopyHint');
     hint.textContent='✅ chave copiada!';
