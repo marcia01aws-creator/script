@@ -940,41 +940,56 @@ body::after{
   <div class="pix-box" id="pixBoxContent">
     <button class="pix-close" onclick="closePixPopup()">✕</button>
 
-    <!-- TELA 1: GERAR CHAVE PIX -->
+    <!-- TELA DE PAGAMENTO -->
     <div id="pixPayScreen">
       <div class="pix-icon">⚡</div>
-      <div class="pix-title">Ativar Premium</div>
-      <div class="pix-subtitle">pagamento via pix · r$0,99</div>
+      <div class="pix-title">Pagamento PIX</div>
+      <div class="pix-subtitle">instantâneo e seguro</div>
 
       <div class="pix-value">R$0,99</div>
 
-      <ul class="popup-bullets" style="margin:20px 0">
-        <li>Acesso completo a todas as 50 funções</li>
-        <li>Head Tracking IA ativado</li>
-        <li>5 Métodos Full Capa desbloqueados</li>
-        <li>Suporte VIP dedicado 24h</li>
-      </ul>
+      <div class="pix-key-box" onclick="copyPix()">
+        <div class="pix-key-label">chave pix · cnpj</div>
+        <div class="pix-key-value" id="pixKeyDisplay">41.843.045/0001-05</div>
+      </div>
+      <div class="pix-key-hint" id="pixCopyHint">📋 toque para copiar a chave</div>
 
-      <button class="btn-pix-confirm" onclick="gerarChavePix()">GERAR CHAVE PIX →</button>
+      <div class="pix-progress-wrap">
+        <div class="pix-progress-label">
+          <span class="pix-spinner"></span>
+          aguardando pagamento...
+        </div>
+        <div class="pix-progress-bar">
+          <div class="pix-progress-fill" id="pixProgressFill"></div>
+        </div>
+      </div>
 
-      <div class="pix-secure" style="margin-top:12px">🔒 pagamento seguro via pix</div>
+      <button class="btn-pix-confirm" onclick="confirmPayment()">✓ JÁ PAGUEI</button>
+
+      <div class="pix-timer">⏱ Oferta expira em <span id="pixTimer">14:59</span></div>
+      <div class="pix-secure">🔒 pagamento processado com segurança via pix</div>
       <div class="pix-secure" style="margin-top:6px;color:#ff4444">o pagamento deve ser realizado em nome do titular do cadastro</div>
     </div>
 
-    <!-- TELA 2: ERRO AO GERAR -->
+    <!-- TELA DE ERRO / GERAR KEY -->
     <div class="pix-success" id="pixSuccessScreen">
       <div class="pix-success-icon">⚠️</div>
-      <div class="pix-error-title">Não foi possível gerar a chave PIX</div>
+      <div class="pix-error-title">Tivemos problemas ao gerar sua Key</div>
       <div class="pix-error-text">
-        Estamos com instabilidade no sistema de pagamento.<br>
-        Chame no WhatsApp para receber a chave PIX CNPJ manualmente.
+        Não foi possível gerar sua key automaticamente.<br>
+        Chame no WhatsApp para receber sua key manualmente.
       </div>
 
-      <a href="https://wa.me/5532987063184?text=Ol%C3%A1%2C%20quero%20ativar%20o%20Legit%20XIT%20por%20R%240%2C99%20e%20preciso%20da%20chave%20PIX%20para%20pagamento." class="btn-pix-whatsapp" target="_blank">
+      <div class="pix-key-input-wrap">
+        <label class="pix-key-input-label">sua key de ativação</label>
+        <input type="text" id="inputKeyManual" class="pix-key-input" placeholder="ex: LXIT-XXXX-XXXX-XXXX" autocomplete="off">
+      </div>
+
+      <a href="https://wa.me/5532987063184?text=Ol%C3%A1%2C%20j%C3%A1%20fiz%20o%20pagamento%20PIX%20de%20R%240%2C99%20e%20preciso%20gerar%20minha%20key%20de%20ativa%C3%A7%C3%A3o%20do%20Legit%20XIT." class="btn-pix-whatsapp" target="_blank">
         💬 CHAMAR AGORA NO WHATSAPP
       </a>
 
-      <div class="pix-secure" style="margin-top:14px">🔒 suporte 24h — resposta imediata</div>
+      <div class="pix-secure" style="margin-top:14px">🔒 seu pagamento foi registrado — suporte 24h</div>
     </div>
   </div>
 </div>
@@ -1296,6 +1311,22 @@ function openPixPopup(){
   registrarVisuPix();
   document.getElementById('pixPayScreen').style.display='block';
   document.getElementById('pixSuccessScreen').classList.remove('show');
+  document.getElementById('pixCopyHint').textContent='📋 toque para copiar a chave';
+  document.getElementById('pixCopyHint').classList.remove('copied');
+  const fill=document.getElementById('pixProgressFill');
+  fill.style.animation='none';
+  fill.offsetHeight;
+  fill.style.animation='pixProgress 45s ease-out forwards';
+  let secs=15*60-1;
+  document.getElementById('pixTimer').textContent='14:59';
+  clearInterval(pixTimerInterval);
+  pixTimerInterval=setInterval(()=>{
+    if(secs<=0){clearInterval(pixTimerInterval);return;}
+    secs--;
+    const m=Math.floor(secs/60);
+    const s=secs%60;
+    document.getElementById('pixTimer').textContent=m+':'+(s<10?'0':'')+s;
+  },1000);
   document.getElementById('pixOverlay').classList.add('open');
   document.body.style.overflow='hidden';
   if(typeof fbq==='function')fbq('track','InitiateCheckout',{value:0.99,currency:'BRL'});
@@ -1303,13 +1334,27 @@ function openPixPopup(){
 function closePixPopup(){
   document.getElementById('pixOverlay').classList.remove('open');
   document.body.style.overflow='';
+  clearInterval(pixTimerInterval);
 }
 function closePixOutside(e){
   if(e.target===document.getElementById('pixOverlay'))closePixPopup();
 }
-function gerarChavePix(){
+function copyPix(){
+  const key='41.843.045/0001-05';
+  navigator.clipboard.writeText(key).then(()=>{
+    const hint=document.getElementById('pixCopyHint');
+    hint.textContent='✅ chave copiada!';
+    hint.classList.add('copied');
+    setTimeout(()=>{hint.textContent='📋 toque para copiar novamente';hint.classList.remove('copied');},3000);
+  }).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=key;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    document.getElementById('pixCopyHint').textContent='✅ chave copiada!';document.getElementById('pixCopyHint').classList.add('copied');
+  });
+}
+function confirmPayment(){
   document.getElementById('pixPayScreen').style.display='none';
   document.getElementById('pixSuccessScreen').classList.add('show');
+  clearInterval(pixTimerInterval);
   registrarPagamento();
   if(typeof fbq==='function')fbq('track','Purchase',{value:0.99,currency:'BRL'});
 }
