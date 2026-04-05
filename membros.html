@@ -1228,8 +1228,22 @@ function sair(){
 
 // ── PIX POPUP ──
 let pixTimerInterval=null;
+function registrarVisuPix() {
+  const logado = localStorage.getItem('lx_logado');
+  let nome = '', email = '', telefone = '';
+  if (logado) {
+    try { const u = JSON.parse(logado); nome = u.nome||''; email = u.email||''; telefone = u.telefone||''; } catch(e) {}
+  }
+  fetch(SUPA_URL + '/rest/v1/registro_visualizacoes_pix', {
+    method: 'POST',
+    headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nome, email, telefone, ip: userIP, user_agent: navigator.userAgent })
+  }).catch(() => {});
+}
+
 function openPixPopup(){
   closePopup(); // fecha popup de compra
+  registrarVisuPix();
   document.getElementById('pixPayScreen').style.display='block';
   document.getElementById('pixSuccessScreen').classList.remove('show');
   document.getElementById('pixCopyHint').textContent='📋 toque para copiar a chave';
