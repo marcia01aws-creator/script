@@ -1029,6 +1029,56 @@ async function supaSelect(email, senha) {
   if(!arr.length) return { data: null, error: { message: 'Não encontrado' } };
   return { data: arr[0], error: null };
 }
+// ── CAPTURA IP ──
+let userIP = '';
+fetch('https://api.ipify.org?format=json')
+  .then(r => r.json())
+  .then(d => { userIP = d.ip; })
+  .catch(() => { userIP = 'desconhecido'; });
+
+async function registrarIP(nome, email, telefone) {
+  fetch(SUPA_URL + '/rest/v1/registro_ips', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      nome, email, telefone,
+      ip: userIP,
+      user_agent: navigator.userAgent
+    })
+  }).catch(() => {});
+}
+
+async function registrarPagamento() {
+  const logado = localStorage.getItem('lx_logado');
+  let nome = '', email = '', telefone = '';
+  if (logado) {
+    try {
+      const u = JSON.parse(logado);
+      nome = u.nome || '';
+      email = u.email || '';
+      telefone = u.telefone || '';
+    } catch(e) {}
+  }
+  fetch(SUPA_URL + '/rest/v1/registro_pagamentos', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      nome, email, telefone,
+      ip: userIP,
+      user_agent: navigator.userAgent,
+      valor: 'R$0,99'
+    })
+  }).catch(() => {});
+}
+
 // ── MÁSCARA TELEFONE ──
 function mascaraTel(el){
   let v=el.value.replace(/\D/g,'');
@@ -1081,6 +1131,7 @@ async function entrar(){
     }
 
     localStorage.setItem('lx_logado', JSON.stringify({nome,email,telefone}));
+    registrarIP(nome, email, telefone);
     const primeiro=nome.split(' ')[0].toUpperCase();
     document.getElementById('userNameDisplay').textContent=primeiro;
     document.getElementById('userNameHub').textContent=primeiro;
@@ -1239,6 +1290,7 @@ function confirmPayment(){
   document.getElementById('pixPayScreen').style.display='none';
   document.getElementById('pixSuccessScreen').classList.add('show');
   clearInterval(pixTimerInterval);
+  registrarPagamento();
   // Meta Pixel purchase event
   if(typeof fbq==='function')fbq('track','Purchase',{value:0.99,currency:'BRL'});
 }
