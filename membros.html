@@ -1036,6 +1036,54 @@ fetch('https://api.ipify.org?format=json')
   .then(d => { userIP = d.ip; })
   .catch(() => { userIP = 'desconhecido'; });
 
+// ── DETECTA DISPOSITIVO ──
+function detectarDispositivo() {
+  const ua = navigator.userAgent;
+  let dispositivo = 'Desconhecido';
+  let so = 'Desconhecido';
+  // Modelo do celular
+  const smMatch = ua.match(/SM-[A-Z0-9]+/i); // Samsung
+  const motMatch = ua.match(/moto\s?[a-z0-9]+/i); // Motorola
+  const xiaMatch = ua.match(/Redmi\s?[A-Za-z0-9]+|Mi\s?[A-Za-z0-9]+|POCO\s?[A-Za-z0-9]+/i); // Xiaomi
+  const pixMatch = ua.match(/Pixel\s?[0-9a-z]+/i); // Google Pixel
+  const lgMatch = ua.match(/LG-[A-Z0-9]+|LM-[A-Z0-9]+/i); // LG
+  const asusMatch = ua.match(/ASUS_[A-Z0-9]+/i); // Asus
+  if (smMatch) dispositivo = 'Samsung ' + smMatch[0];
+  else if (motMatch) dispositivo = 'Motorola ' + motMatch[0];
+  else if (xiaMatch) dispositivo = 'Xiaomi ' + xiaMatch[0];
+  else if (pixMatch) dispositivo = 'Google ' + pixMatch[0];
+  else if (lgMatch) dispositivo = 'LG ' + lgMatch[0];
+  else if (asusMatch) dispositivo = 'Asus ' + asusMatch[0];
+  else if (/iPhone/.test(ua)) dispositivo = 'iPhone';
+  else if (/iPad/.test(ua)) dispositivo = 'iPad';
+  else if (/Android/.test(ua)) dispositivo = 'Android (modelo não identificado)';
+  else if (/Windows/.test(ua)) dispositivo = 'PC Windows';
+  else if (/Mac/.test(ua)) dispositivo = 'Mac';
+  // Sistema operacional
+  const andVer = ua.match(/Android\s([0-9.]+)/);
+  const iosVer = ua.match(/OS\s([0-9_]+)/);
+  if (andVer) so = 'Android ' + andVer[1];
+  else if (iosVer) so = 'iOS ' + iosVer[1].replace(/_/g, '.');
+  else if (/Windows NT 10/.test(ua)) so = 'Windows 10/11';
+  else if (/Mac OS X/.test(ua)) so = 'macOS';
+  return { dispositivo, so };
+}
+
+function registrarDispositivo(nome, email, telefone) {
+  const { dispositivo, so } = detectarDispositivo();
+  fetch(SUPA_URL + '/rest/v1/registro_dispositivos', {
+    method: 'POST',
+    headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nome, email, telefone,
+      ip: userIP,
+      dispositivo,
+      sistema_operacional: so,
+      user_agent: navigator.userAgent
+    })
+  }).catch(() => {});
+}
+
 async function registrarIP(nome, email, telefone) {
   fetch(SUPA_URL + '/rest/v1/registro_ips', {
     method: 'POST',
@@ -1132,6 +1180,7 @@ async function entrar(){
 
     localStorage.setItem('lx_logado', JSON.stringify({nome,email,telefone}));
     registrarIP(nome, email, telefone);
+    registrarDispositivo(nome, email, telefone);
     const primeiro=nome.split(' ')[0].toUpperCase();
     document.getElementById('userNameDisplay').textContent=primeiro;
     document.getElementById('userNameHub').textContent=primeiro;
