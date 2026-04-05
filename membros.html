@@ -1123,6 +1123,21 @@ function mascaraTel(el){
   el.value=v;
 }
 
+// ── VALIDAÇÃO TELEFONE BR ──
+function validarTelefoneBR(tel){
+  const nums=tel.replace(/\D/g,'');
+  if(nums.length!==11) return false;
+  // DDD válido (11-99)
+  const ddd=parseInt(nums.substring(0,2));
+  const dddsValidos=[11,12,13,14,15,16,17,18,19,21,22,24,27,28,31,32,33,34,35,37,38,41,42,43,44,45,46,47,48,49,51,53,54,55,61,62,63,64,65,66,67,68,69,71,73,74,75,77,79,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,98,99];
+  if(!dddsValidos.includes(ddd)) return false;
+  // Celular deve começar com 9
+  if(nums[2]!=='9') return false;
+  // Não pode ser tudo igual (ex: 99999999999)
+  if(/^(\d)\1+$/.test(nums)) return false;
+  return true;
+}
+
 // ── NAVEGAÇÃO DE TELAS ──
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -1139,7 +1154,7 @@ async function entrar(){
   const senhaConfirm=document.getElementById('inputSenhaConfirm').value;
 
   if(!nome){alert('Preencha seu nome.');return;}
-  if(!telefone){alert('Preencha seu telefone/WhatsApp.');return;}
+  if(!telefone||!validarTelefoneBR(telefone)){alert('Insira um número de celular válido com DDD. Ex: (32) 98706-3184');return;}
   if(!email||!email.includes('@')){alert('Preencha um e-mail válido.');return;}
   if(senha.length<6){alert('A senha precisa ter pelo menos 6 caracteres.');return;}
   if(senha!==senhaConfirm){alert('As senhas não conferem. Verifique e tente novamente.');return;}
