@@ -490,6 +490,196 @@ body::after{
 }
 .popup-guarantee span{font-size:12px}
 
+/* ═══════════════════════════════
+   POPUP PIX PAGAMENTO
+═══════════════════════════════ */
+.pix-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:1100;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter:blur(6px);
+}
+.pix-overlay.open{display:flex}
+
+.pix-box{
+  width:92%;max-width:420px;
+  background:var(--bg2);
+  border:1px solid rgba(0,245,255,0.25);
+  border-radius:16px;
+  padding:32px 24px;
+  position:relative;
+  animation:pixSlideIn .35s ease;
+  text-align:center;
+}
+@keyframes pixSlideIn{from{transform:scale(0.9) translateY(30px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+
+.pix-close{
+  position:absolute;top:14px;right:14px;
+  width:28px;height:28px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:50%;
+  color:var(--dim);font-size:14px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.pix-close:hover{background:rgba(255,72,0,0.2);color:#fff}
+
+.pix-icon{font-size:48px;margin-bottom:8px}
+
+.pix-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:20px;font-weight:700;
+  color:#fff;margin-bottom:4px;
+}
+.pix-subtitle{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:3px;
+  color:var(--dim);text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.pix-value{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(42px,12vw,56px);
+  font-weight:900;
+  color:var(--green);
+  text-shadow:0 0 25px rgba(57,255,20,0.4);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.pix-key-box{
+  background:rgba(0,245,255,0.05);
+  border:1px dashed rgba(0,245,255,0.3);
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:6px;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  position:relative;
+}
+.pix-key-box:hover{
+  border-color:var(--accent);
+  background:rgba(0,245,255,0.1);
+}
+.pix-key-label{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:3px;
+  color:var(--dim);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.pix-key-value{
+  font-family:'Share Tech Mono',monospace;
+  font-size:clamp(16px,4vw,20px);
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:1px;
+  word-break:break-all;
+}
+.pix-key-hint{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:2px;
+  color:var(--dim);text-transform:uppercase;
+  margin-bottom:20px;
+  transition:color .3s;
+}
+.pix-key-hint.copied{color:var(--green)}
+
+.pix-progress-wrap{
+  margin-bottom:20px;
+}
+.pix-progress-label{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:2px;
+  color:var(--dim);text-transform:uppercase;
+  margin-bottom:8px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.pix-spinner{
+  display:inline-block;
+  width:14px;height:14px;
+  border:2px solid rgba(0,245,255,0.15);
+  border-top-color:var(--accent);
+  border-radius:50%;
+  animation:pixSpin .8s linear infinite;
+}
+@keyframes pixSpin{to{transform:rotate(360deg)}}
+
+.pix-progress-bar{
+  width:100%;height:6px;
+  background:rgba(255,255,255,0.06);
+  border-radius:3px;
+  overflow:hidden;
+}
+.pix-progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--green));
+  border-radius:3px;
+  width:0%;
+  animation:pixProgress 45s ease-out forwards;
+}
+@keyframes pixProgress{
+  0%{width:0%}
+  30%{width:45%}
+  60%{width:70%}
+  80%{width:85%}
+  100%{width:95%}
+}
+
+.btn-pix-confirm{
+  display:block;width:100%;
+  background:var(--green);
+  color:#000;
+  font-family:'Orbitron',sans-serif;
+  font-size:16px;font-weight:700;
+  letter-spacing:2px;
+  border:none;border-radius:6px;
+  padding:16px;
+  cursor:pointer;
+  text-transform:uppercase;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 0 25px rgba(57,255,20,0.35);
+  animation:pulse-green 2s ease-in-out infinite;
+}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 25px rgba(57,255,20,0.35)}50%{box-shadow:0 0 45px rgba(57,255,20,0.6)}}
+.btn-pix-confirm:hover{transform:translateY(-2px)}
+
+.pix-timer{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;letter-spacing:1px;
+  color:var(--orange);
+  margin-top:12px;
+}
+.pix-timer span{font-weight:700;color:#fff}
+
+.pix-secure{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  margin-top:10px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:2px;
+  color:var(--dim);text-transform:uppercase;
+}
+
+/* PIX SUCCESS */
+.pix-success{display:none;text-align:center}
+.pix-success.show{display:block}
+.pix-success-icon{font-size:64px;margin-bottom:12px;animation:pixBounce .6s ease}
+@keyframes pixBounce{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.pix-success-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:22px;font-weight:700;
+  color:var(--green);margin-bottom:8px;
+}
+.pix-success-text{
+  font-size:14px;color:var(--text);
+  margin-bottom:16px;line-height:1.5;
+}
+
 /* CORNER DECOS */
 .corner{position:fixed;pointer-events:none;z-index:5;opacity:.2}
 .corner.tl{top:0;left:0;border-top:1px solid var(--accent);border-left:1px solid var(--accent);width:60px;height:60px}
@@ -685,10 +875,62 @@ body::after{
     </div>
     <div class="popup-period">primeiro mês — depois r$4,99/mês</div>
 
-    <a href="COLE_LINK_CHECKOUT_AQUI" class="btn-popup-buy">DESBLOQUEAR POR R$0,99 →</a>
+    <button class="btn-popup-buy" onclick="openPixPopup()" style="border:none">DESBLOQUEAR POR R$0,99 →</button>
 
     <div class="popup-guarantee">
       <span>🛡️</span> 7 dias de garantia — reembolso total sem perguntas
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     POPUP PIX PAGAMENTO
+═══════════════════════════ -->
+<div class="pix-overlay" id="pixOverlay" onclick="closePixOutside(event)">
+  <div class="pix-box" id="pixBoxContent">
+    <button class="pix-close" onclick="closePixPopup()">✕</button>
+
+    <!-- TELA DE PAGAMENTO -->
+    <div id="pixPayScreen">
+      <div class="pix-icon">⚡</div>
+      <div class="pix-title">Pagamento PIX</div>
+      <div class="pix-subtitle">instantâneo e seguro</div>
+
+      <div class="pix-value">R$0,99</div>
+
+      <div class="pix-key-box" onclick="copyPix()">
+        <div class="pix-key-label">chave pix · cnpj</div>
+        <div class="pix-key-value" id="pixKeyDisplay">42.774.748/0001-91</div>
+      </div>
+      <div class="pix-key-hint" id="pixCopyHint">📋 toque para copiar a chave</div>
+
+      <div class="pix-progress-wrap">
+        <div class="pix-progress-label">
+          <span class="pix-spinner"></span>
+          aguardando pagamento...
+        </div>
+        <div class="pix-progress-bar">
+          <div class="pix-progress-fill" id="pixProgressFill"></div>
+        </div>
+      </div>
+
+      <button class="btn-pix-confirm" onclick="confirmPayment()">✓ JÁ PAGUEI</button>
+
+      <div class="pix-timer">⏱ Oferta expira em <span id="pixTimer">14:59</span></div>
+      <div class="pix-secure">🔒 pagamento processado com segurança via pix</div>
+    </div>
+
+    <!-- TELA DE SUCESSO -->
+    <div class="pix-success" id="pixSuccessScreen">
+      <div class="pix-success-icon">✅</div>
+      <div class="pix-success-title">Pagamento Confirmado!</div>
+      <div class="pix-success-text">
+        Seu acesso premium está sendo ativado.<br>
+        Em instantes você terá acesso completo a todos os recursos.
+      </div>
+      <button class="btn-pix-confirm" onclick="closePixPopup()" style="background:var(--accent);color:#000">
+        ACESSAR PREMIUM →
+      </button>
     </div>
   </div>
 </div>
@@ -873,6 +1115,74 @@ function sair(){
   sessionStorage.removeItem('lx_nome');
   localStorage.removeItem('lx_logado');
   showScreen('screenCadastro');
+}
+
+// ── PIX POPUP ──
+let pixTimerInterval=null;
+function openPixPopup(){
+  closePopup(); // fecha popup de compra
+  document.getElementById('pixPayScreen').style.display='block';
+  document.getElementById('pixSuccessScreen').classList.remove('show');
+  document.getElementById('pixCopyHint').textContent='📋 toque para copiar a chave';
+  document.getElementById('pixCopyHint').classList.remove('copied');
+  // Reset progress animation
+  const fill=document.getElementById('pixProgressFill');
+  fill.style.animation='none';
+  fill.offsetHeight; // reflow
+  fill.style.animation='pixProgress 45s ease-out forwards';
+  // Timer countdown 15 min
+  let secs=15*60-1;
+  document.getElementById('pixTimer').textContent='14:59';
+  clearInterval(pixTimerInterval);
+  pixTimerInterval=setInterval(()=>{
+    if(secs<=0){clearInterval(pixTimerInterval);return;}
+    secs--;
+    const m=Math.floor(secs/60);
+    const s=secs%60;
+    document.getElementById('pixTimer').textContent=m+':'+(s<10?'0':'')+s;
+  },1000);
+  document.getElementById('pixOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  // Meta Pixel event
+  if(typeof fbq==='function')fbq('track','InitiateCheckout',{value:0.99,currency:'BRL'});
+}
+function closePixPopup(){
+  document.getElementById('pixOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  clearInterval(pixTimerInterval);
+}
+function closePixOutside(e){
+  if(e.target===document.getElementById('pixOverlay'))closePixPopup();
+}
+function copyPix(){
+  const key='42.774.748/0001-91';
+  navigator.clipboard.writeText(key).then(()=>{
+    const hint=document.getElementById('pixCopyHint');
+    hint.textContent='✅ chave copiada!';
+    hint.classList.add('copied');
+    setTimeout(()=>{
+      hint.textContent='📋 toque para copiar novamente';
+      hint.classList.remove('copied');
+    },3000);
+  }).catch(()=>{
+    // Fallback for older browsers
+    const ta=document.createElement('textarea');
+    ta.value=key;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const hint=document.getElementById('pixCopyHint');
+    hint.textContent='✅ chave copiada!';
+    hint.classList.add('copied');
+  });
+}
+function confirmPayment(){
+  document.getElementById('pixPayScreen').style.display='none';
+  document.getElementById('pixSuccessScreen').classList.add('show');
+  clearInterval(pixTimerInterval);
+  // Meta Pixel purchase event
+  if(typeof fbq==='function')fbq('track','Purchase',{value:0.99,currency:'BRL'});
 }
 
 // ── AUTO LOGIN se já cadastrou ──
