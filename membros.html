@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Área de Membros — Legit XIT</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '931486386473956');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=931486386473956&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -506,7 +523,7 @@ body::after{
       </div>
       <div class="field">
         <label>Telefone / WhatsApp</label>
-        <input type="tel" id="inputTelefone" placeholder="(00) 00000-0000" autocomplete="tel">
+        <input type="tel" id="inputTelefone" placeholder="(00) 00000-0000" autocomplete="tel" maxlength="15" oninput="mascaraTel(this)">
       </div>
       <div class="field">
         <label>E-mail</label>
@@ -524,8 +541,11 @@ body::after{
       <div class="cadastro-note">🔒 acesso exclusivo para clientes legit xit</div>
     </div>
 
-    <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center">
-      ainda não é membro? &nbsp;<a href="obrigado.html" style="color:var(--accent)">teste por r$0,99</a>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center;margin-top:16px">
+      já tem conta? &nbsp;<a href="#" onclick="toggleLogin(event)" style="color:var(--accent)" id="linkLogin">entrar com e-mail e senha</a>
+    </div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center;margin-top:6px">
+      ainda não é membro? &nbsp;<span style="color:var(--accent)">teste por r$0,99</span>
     </div>
   </div>
 </div>
@@ -673,12 +693,52 @@ body::after{
   </div>
 </div>
 
-<!-- SUPABASE SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- SUPABASE API -->
 <script>
 const SUPA_URL = 'https://vnorgotkrgcewdhdixfi.supabase.co';
 const SUPA_KEY = 'sb_publishable_UIs6fYeH-3yxyf7V3dx1MQ_0XjvIGMK';
-const supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+
+// Usa fetch direto para máxima compatibilidade
+async function supaInsert(dados) {
+  const res = await fetch(SUPA_URL + '/rest/v1/clientes', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(dados)
+  });
+  if(!res.ok) {
+    const err = await res.json();
+    return { data: null, error: err };
+  }
+  const data = await res.json();
+  return { data, error: null };
+}
+
+async function supaSelect(email, senha) {
+  const res = await fetch(SUPA_URL + '/rest/v1/clientes?email=eq.' + encodeURIComponent(email) + '&senha=eq.' + encodeURIComponent(senha) + '&limit=1', {
+    headers: {
+      'apikey': SUPA_KEY,
+      'Authorization': 'Bearer ' + SUPA_KEY
+    }
+  });
+  const arr = await res.json();
+  if(!arr.length) return { data: null, error: { message: 'Não encontrado' } };
+  return { data: arr[0], error: null };
+}
+// ── MÁSCARA TELEFONE ──
+function mascaraTel(el){
+  let v=el.value.replace(/\D/g,'');
+  if(v.length>11)v=v.slice(0,11);
+  if(v.length>6)v=v.replace(/^(\d{2})(\d{5})(\d)/,'($1) $2-$3');
+  else if(v.length>2)v=v.replace(/^(\d{2})(\d)/,'($1) $2');
+  else if(v.length>0)v=v.replace(/^(\d)/,'($1');
+  el.value=v;
+}
+
 // ── NAVEGAÇÃO DE TELAS ──
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -705,21 +765,91 @@ async function entrar(){
   btn.textContent='SALVANDO...';
   btn.disabled=true;
 
-  // Salva no Supabase
-  const {error}=await supabase.from('clientes').insert([{nome,telefone,email,senha}]);
-  if(error) console.error('Supabase erro:',error);
+  try {
+    const {data,error}=await supaInsert({nome,telefone,email,senha});
+    if(error){
+      console.error('Supabase erro:',error);
+      const msg=error.message||JSON.stringify(error);
+      if(msg.includes('duplicate')||msg.includes('unique')){
+        alert('Este e-mail já está cadastrado. Tente fazer login.');
+      } else {
+        alert('Erro ao cadastrar: '+msg);
+      }
+      btn.textContent='CRIAR CONTA E ENTRAR →';
+      btn.disabled=false;
+      return;
+    }
 
+    localStorage.setItem('lx_logado', JSON.stringify({nome,email,telefone}));
+    const primeiro=nome.split(' ')[0].toUpperCase();
+    document.getElementById('userNameDisplay').textContent=primeiro;
+    document.getElementById('userNameHub').textContent=primeiro;
+    showScreen('screenMembros');
+  } catch(err) {
+    console.error('Erro inesperado:',err);
+    alert('Erro de conexão. Verifique sua internet e tente novamente.');
+  }
   btn.textContent='CRIAR CONTA E ENTRAR →';
   btn.disabled=false;
+}
 
-  // Salva sessão local
-  localStorage.setItem('lx_logado', JSON.stringify({nome,email,telefone}));
-  sessionStorage.setItem('lx_nome', nome);
+// ── LOGIN (toggle) ──
+let isLoginMode=false;
+function toggleLogin(e){
+  e.preventDefault();
+  isLoginMode=!isLoginMode;
+  const fields=document.querySelectorAll('.field');
+  const btn=document.querySelector('.btn-cadastro');
+  const titulo=document.querySelector('.cadastro-title');
+  const link=document.getElementById('linkLogin');
+  if(isLoginMode){
+    // Esconde campos de nome, telefone, confirmar senha
+    fields[0].style.display='none'; // nome
+    fields[1].style.display='none'; // telefone
+    fields[4].style.display='none'; // confirmar senha
+    btn.textContent='ENTRAR →';
+    btn.onclick=login;
+    titulo.textContent='faça login';
+    link.textContent='criar uma conta nova';
+  } else {
+    fields[0].style.display='block';
+    fields[1].style.display='block';
+    fields[4].style.display='block';
+    btn.textContent='CRIAR CONTA E ENTRAR →';
+    btn.onclick=entrar;
+    titulo.textContent='crie sua conta';
+    link.textContent='entrar com e-mail e senha';
+  }
+}
 
-  const primeiro=nome.split(' ')[0].toUpperCase();
-  document.getElementById('userNameDisplay').textContent=primeiro;
-  document.getElementById('userNameHub').textContent=primeiro;
-  showScreen('screenMembros');
+async function login(){
+  const email=document.getElementById('inputEmail').value.trim();
+  const senha=document.getElementById('inputSenha').value;
+  if(!email||!email.includes('@')){alert('Preencha seu e-mail.');return;}
+  if(!senha){alert('Preencha sua senha.');return;}
+
+  const btn=document.querySelector('.btn-cadastro');
+  btn.textContent='ENTRANDO...';
+  btn.disabled=true;
+
+  try {
+    const {data,error}=await supaSelect(email,senha);
+    if(error||!data){
+      alert('E-mail ou senha incorretos.');
+      btn.textContent='ENTRAR →';
+      btn.disabled=false;
+      return;
+    }
+    localStorage.setItem('lx_logado', JSON.stringify({nome:data.nome,email:data.email,telefone:data.telefone}));
+    const primeiro=data.nome.split(' ')[0].toUpperCase();
+    document.getElementById('userNameDisplay').textContent=primeiro;
+    document.getElementById('userNameHub').textContent=primeiro;
+    showScreen('screenMembros');
+  } catch(err){
+    alert('Erro de conexão. Tente novamente.');
+  }
+  btn.textContent='ENTRAR →';
+  btn.disabled=false;
 }
 
 // ── POPUP ──

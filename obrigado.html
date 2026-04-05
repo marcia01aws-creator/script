@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compra confirmada — Legit XIT</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '931486386473956');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=931486386473956&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -167,10 +184,10 @@ footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.08);padd
   <div class="download-box">
     <h2>⬇️ BAIXAR E ATIVAR POR R$0,99</h2>
     <p>Baixe o app, instale e ative o acesso completo por R$0,99 no primeiro mês. Cancele em até 7 dias e receba reembolso total.</p>
-    <a href="COLE_LINK_APK_AQUI" class="btn-download" id="btnDownload">
+    <a href="https://github.com/marcia01aws-creator/script/releases/download/v1.0/LegitXit.apk" class="btn-download" id="btnDownload" onclick="fbq('track','Lead',{content_name:'Download APK'})">
       ⬇️ BAIXAR APLICATIVO AGORA
     </a>
-    <div class="download-backup">Se o download não iniciar, <a href="COLE_LINK_APK_AQUI">toque aqui para baixar novamente</a></div>
+    <div class="download-backup">Se o download não iniciar, <a href="https://github.com/marcia01aws-creator/script/releases/download/v1.0/LegitXit.apk">toque aqui para baixar novamente</a></div>
   </div>
 
   <!-- TRUST -->
@@ -230,8 +247,8 @@ footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.08);padd
   </div>
 
   <!-- BOTÃO SECUNDÁRIO -->
-  <a href="COLE_LINK_APK_AQUI" class="btn-secondary-dl">⬇️ INSTALAR MEU APP</a>
-  <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center;margin-bottom:28px">se o botão não funcionar, <a href="COLE_LINK_APK_AQUI" style="color:var(--green)">clique aqui para o link alternativo</a></div>
+  <a href="https://github.com/marcia01aws-creator/script/releases/download/v1.0/LegitXit.apk" class="btn-secondary-dl">⬇️ INSTALAR MEU APP</a>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center;margin-bottom:28px">se o botão não funcionar, <a href="https://github.com/marcia01aws-creator/script/releases/download/v1.0/LegitXit.apk" style="color:var(--green)">clique aqui para o link alternativo</a></div>
 
   <div class="divider"></div>
 
@@ -289,7 +306,7 @@ footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.08);padd
       <p>Está com dificuldade para instalar? Manda mensagem — te ajudamos a instalar passo a passo.</p>
     </div>
   </div>
-  <a href="https://wa.me/SEUNUMERO" class="btn-wpp">📲 CHAMAR NO WHATSAPP</a>
+  <a href="https://wa.me/5532987063184?text=Quero%20saber%20mais%20sobre%20o%20LegitXit" class="btn-wpp">📲 CHAMAR NO WHATSAPP</a>
 
 </div>
 
@@ -332,6 +349,9 @@ footer{position:relative;z-index:5;border-top:1px solid rgba(255,72,0,0.08);padd
 const params=new URLSearchParams(window.location.search);
 const nome=params.get('nome');
 if(nome){document.getElementById('nomeUsuario').textContent='Bem-vindo, '+nome+'!';}
+
+// Meta Pixel — evento de conversão ao chegar na página
+fbq('track','ViewContent',{content_name:'Pagina Obrigado'});
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(q=>{
